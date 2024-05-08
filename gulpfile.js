@@ -3,6 +3,8 @@
 const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
+const ghPages = require('gh-pages');
+const path = require('path');
 
 const dist = "./dist/";
 
@@ -11,6 +13,11 @@ gulp.task("copy-html", () => {
                 .pipe(gulp.dest(dist))
                 .pipe(browsersync.stream());
 });
+
+function deploy(cb) {
+  ghPages.publish(path.join(process.cwd(), './dist'), cb);
+}
+exports.deploy = deploy;
 
 gulp.task("build-js", () => {
     return gulp.src("./src/js/main.js")
