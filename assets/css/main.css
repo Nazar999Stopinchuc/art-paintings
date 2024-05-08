@@ -1007,10 +1007,23 @@ h4 {
 .feedback {
   background-color: #f7e7e6;
   padding: 9rem 0;
+  max-width: 100%;
+  overflow: hidden;
 }
+
+
 
 .feedback-slider-item {
   padding-bottom: 5rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 3rem;
+  max-width: 100%;
+}
+
+.feedback-slider-content {
+  height: 100%;
+  padding: 0 4rem;
 }
 
 .feedback-block {
@@ -1084,14 +1097,34 @@ h4 {
   margin-top: 2rem;
 }
 
+.often-questions .accordion-heading.active+.accordion-block {
+  display: block;
+}
+
 .often-questions .accordion-heading span {
   border-bottom: 2px dotted #333;
 }
 
+.often-questions p.active-style span {
+  color: #E950D7;
+  font-weight: 900;
+  text-decoration: none;
+  border: 0;
+  overflow: hidden;
+}
+
 .often-questions .accordion-block {
-  margin-top: 1rem;
   background-color: #f7e7e6;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+.often-questions .accordion-block.active-content {
+  overflow: visible;
+  opacity: 1;
   padding: 3rem 4rem;
+  margin-top: 1rem;
 }
 
 .often-questions .accordion-block:before {
@@ -1503,6 +1536,20 @@ h4 {
   text-align: center;
 }
 
+.pageup {
+  opacity: 0;
+  width: 26px;
+  height: 26px;
+  position: fixed;
+  bottom: 100px;
+  right: 5%;
+  z-index: 30;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid #fff;
+  transition: 1s all;
+}
+
 @media (max-width: 1399px) {
   .paints {
     display: none;
@@ -1866,8 +1913,18 @@ h4 {
     float: right;
   }
 
+  .feedback {
+    padding: 5rem;
+    max-width: 100vh;
+  }
+
   .feedback-slider-item {
     padding-bottom: 0;
+    flex-direction: column;
+  }
+
+  .feedback-slider-content {
+    padding: 0;
   }
 
   .feedback-heading {
@@ -1884,6 +1941,8 @@ h4 {
     transform: translateX(-50%);
     width: 18rem;
   }
+
+
 
   .consultation {
     padding: 6rem 0;
@@ -2052,7 +2111,7 @@ h4 {
   }
 
   .feedback {
-    padding: 5rem 0;
+    padding: 3rem 0;
   }
 
   .feedback .main-next-btn {
